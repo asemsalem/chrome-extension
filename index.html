@@ -2,11 +2,57 @@
 <html>
     <head>
         <script src="index.js"></script>
+        <style>
+            .container{
+                width: 300px;
+                height: 500px;
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: start;
+            }
+            .btn{
+                background-color: blueviolet;
+                border: 1px solid blueviolet;
+                width: 200px;
+                height: 40px;
+                text-align: center;
+                color: #fff;
+                font-weight: bold;
+                border-radius: 20px;
+                font-size: 18px;
+            }
+            .btn:hover{
+                cursor: pointer;
+                background-color: #fff;
+                color: blueviolet;
+            }
+            #reset-btn{
+                display: none;
+            }
+            .response{
+                padding: 0 20px;
+            }
+            .response img{
+                border-radius: 20px;
+            }
+        </style>
     </head>
     <body>
-        <button id="button1" type="button">
-            Start Activity
-        </button>
+        <div class="container">
+            <button class="btn" id="start-btn" type="button">
+                Start Activity
+            </button>
+            <button class="btn" id="reset-btn" type="button">
+                Reset
+            </button>
+
+            <div class="response" id="response-preview">
+                <div id="loading" class="fancy-spinner">
+                    <div class="ring"></div>
+                </div>
+            </div>
+        </div>
 
     </body>
 </html>
