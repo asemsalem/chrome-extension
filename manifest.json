@@ -10,9 +10,17 @@
         "service_worker" : "service-worker.js",
         "type" : "module"
     },
-    "action" : { },
+    "content_scripts": [
+        {
+            "matches": ["https://*/*", "http://*/*"],
+            "js": ["content-script.js"]
+        }
+    ],
+    "action" : { 
+        "default_popup" : "index.html"
+    },
     "permissions" : [
-        "scripting"
+        "scripting","tabs","activeTab"
     ],
     "host_permissions" : [
         "https://*/*",
