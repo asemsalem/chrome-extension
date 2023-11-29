@@ -1,25 +1,22 @@
-
-let results = ''
 chrome.runtime.onMessage.addListener(
-    async function (request, sender, sendResponse) {
-        if( request.message === "service_worker" ) {
-            if(request.content != 'field_found'){
-                results = apiFetch('https://random.imagecdn.app/500/150')
-            }else{
-                results = apiFetch('https://api.quotable.io/quotes/random')
-            }
-        }
-        sendResponse(results)
+    (request, sender, sendResponse) => {
+        fetchRandom(request,sendResponse)
+        return true
     }
 );
 
+const fetchRandom = async (request, sendResponse) => {
+    let url
+    if( request.message === "service_worker" ) {
 
-async function apiFetch(url) {
-    const response = await fetch(url);
-    // const results = await response.json();
-    console.log(response);
-}
+        if(request.content != 'field_found')
+            url = 'https://random.imagecdn.app/500/150'
+        else
+            url = 'https://api.quotable.io/quotes/random'
 
-async function sendResponse(results) {
-    await chrome.runtime.sendMessage({"message": "append result", "result": results})
+        fetch(url).then(async response => {
+            const jsonResponse = await response.json()
+            sendResponse(jsonResponse)
+        })
+    }
 }
