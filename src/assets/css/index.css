@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: #202124;
+    color: #fff;
+}
+
+
+.response{
+    padding: 0 20px;
+}
+.response img{
+    border-radius: 20px;
+}
+.loading {
+    display: flex;
+    justify-content: center;
+}
+.loading div {
+    width: 10px;
+    height: 10px;
+    margin: 10px 5px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-animation: 0.9s bounce infinite alternate;
+    animation: 0.9s bounce infinite alternate;
+}
+button:hover .loading div{
+    background-color: #ea580c;
+}
+.loading div:nth-child(2) {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+.loading div:nth-child(3) {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+@-webkit-keyframes bounce {
+    to {
+        opacity: 0.3;
+        transform: translate3d(0, -1rem, 0);
+    }
+}
+
+@keyframes bounce {
+    to {
+        opacity: 0.3;
+        transform: translate3d(0, -1rem, 0);
+    }
+}
