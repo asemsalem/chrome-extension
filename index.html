@@ -8,8 +8,9 @@
                 height: 500px;
                 padding: 20px;
                 display: flex;
-                justify-content: center;
-                align-items: start;
+                flex-direction: column;
+                justify-content: start;
+                align-items: center;
             }
             .btn{
                 background-color: blueviolet;
@@ -36,6 +37,41 @@
             .response img{
                 border-radius: 20px;
             }
+            .loading {
+                display: none;
+                justify-content: center;
+            }
+            .loading div {
+                width: 1rem;
+                height: 1rem;
+                margin: 2rem 0.3rem;
+                background: #979fd0;
+                border-radius: 50%;
+                -webkit-animation: 0.9s bounce infinite alternate;
+                animation: 0.9s bounce infinite alternate;
+            }
+            .loading div:nth-child(2) {
+                -webkit-animation-delay: 0.3s;
+                animation-delay: 0.3s;
+            }
+            .loading div:nth-child(3) {
+                -webkit-animation-delay: 0.6s;
+                animation-delay: 0.6s;
+            }
+
+            @-webkit-keyframes bounce {
+                to {
+                    opacity: 0.3;
+                    transform: translate3d(0, -1rem, 0);
+                }
+            }
+
+            @keyframes bounce {
+                to {
+                    opacity: 0.3;
+                    transform: translate3d(0, -1rem, 0);
+                }
+            }
         </style>
     </head>
     <body>
@@ -43,14 +79,15 @@
             <button class="btn" id="start-btn" type="button">
                 Start Activity
             </button>
-            <button class="btn" id="reset-btn" type="button">
-                Reset
-            </button>
 
             <div class="response" id="response-preview">
-                <div id="loading" class="fancy-spinner">
-                    <div class="ring"></div>
+                <div class="loading" id="loading">
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
+                <img src="" id="response-image">
+                <h1 id="response-quote"></h1>
             </div>
         </div>
 

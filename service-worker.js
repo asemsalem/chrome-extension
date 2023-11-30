@@ -19,9 +19,10 @@ const fetchRandom = async (request, sendResponse) => {
         else{
             fetch('https://api.quotable.io/quotes/random').then(async response => {
                 const jsonResponse = await response.json()
+                console.log(jsonResponse);
                 sendResponse({
                     type : 'quote',
-                    response : jsonResponse
+                    response : jsonResponse[0].content
                 })
             })
         }
