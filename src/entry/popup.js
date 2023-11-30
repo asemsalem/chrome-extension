@@ -27,7 +27,3 @@ function findInputFieldsHandler() {
         });
     });
 }
-
-
-
-

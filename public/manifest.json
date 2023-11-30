@@ -1,23 +1,23 @@
 {
     "manifest_version" : 3,
-    "name" : "test",
+    "name" : "Extension Task",
     "version" : "1.0.0",
-    "description" : "test",
+    "description" : "Finding input fields inside pages and return random image or quote according to weather fields are found or not",
     "icons": {
         "32": "icon32.png"
     },
     "background": {
-        "service_worker" : "service-worker.js",
+        "service_worker" : "background.js",
         "type" : "module"
     },
     "content_scripts": [
         {
             "matches": ["https://*/*", "http://*/*"],
-            "js": ["content-script.js"]
+            "js": ["content.js"]
         }
     ],
     "action" : { 
-        "default_popup" : "popup.html"
+        "default_popup" : "index.html"
     },
     "permissions" : [
         "scripting","tabs","activeTab"
