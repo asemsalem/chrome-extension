@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   darkMode: false,
   theme: {
     extend: {},
@@ -8,6 +8,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins:  ["tailwindcss ,autoprefixer"],
-}
-
+  plugins: ["tailwindcss ,autoprefixer"],
+};
