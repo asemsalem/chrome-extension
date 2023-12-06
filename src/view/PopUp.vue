@@ -29,13 +29,13 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 
-const disabled = ref(false);
-const loading = ref(false);
-const quote = ref("");
-const imageSrc = ref("");
+const disabled = ref<boolean>(false);
+const loading = ref<boolean>(false);
+const quote = ref<string>("");
+const imageSrc = ref<string>("");
 
 const startActivity = async () => {
   disabled.value = true;
@@ -45,9 +45,9 @@ const startActivity = async () => {
 
 function findInputFieldsHandler() {
   chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
-    var activeTab = tabs[0];
+    let activeTabId: number = tabs[0].id ?? 0;
     chrome.tabs.sendMessage(
-      activeTab.id,
+      activeTabId,
       { message: "start" },
       ({ type, response }) => {
         if (type == "image") {
