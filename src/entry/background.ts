@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 const fetchRandomImage = async (request: unknown, sendResponse: any) => {
   let response: Response;
   try {
-    response = await fetch("https://random.image1111cdn.app/500/150");
+    response = await fetch("https://random.imagecdn.app/500/150");
     sendResponse({
       type: "image",
       response: response.url,
