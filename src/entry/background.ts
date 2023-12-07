@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 const fetchRandomImage = async (request: unknown, sendResponse: any) => {
-  const response = await fetch("https://random.imagecdn.app/500/150");
+  const response: Response = await fetch("https://random.imagecdn.app/500/150");
   sendResponse({
     type: "image",
     response: response.url,
@@ -17,10 +17,12 @@ const fetchRandomImage = async (request: unknown, sendResponse: any) => {
 };
 
 const fetchRandomQuote = async (request: unknown, sendResponse: any) => {
-  const response = await fetch("https://api.quotable.io/quotes/random");
-  const jsonResponse = await response.json();
+  const response: Response = await fetch(
+    "https://api.quotable.io/quotes/random"
+  );
+  const jsonResponse: object[] = await response.json();
   sendResponse({
     type: "quote",
-    response: jsonResponse[0].content,
+    response: jsonResponse[0],
   });
 };

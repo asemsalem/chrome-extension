@@ -34,7 +34,7 @@ import { ref } from "vue";
 
 const disabled = ref<boolean>(false);
 const loading = ref<boolean>(false);
-const quote = ref<string>("");
+const quote = ref<string>();
 const imageSrc = ref<string>("");
 
 const startActivity = async () => {
@@ -43,7 +43,7 @@ const startActivity = async () => {
   findInputFieldsHandler();
 };
 
-function findInputFieldsHandler() {
+const findInputFieldsHandler = () => {
   chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
     let activeTabId: number = tabs[0].id ?? 0;
     chrome.tabs.sendMessage(
@@ -53,12 +53,12 @@ function findInputFieldsHandler() {
         if (type == "image") {
           imageSrc.value = response;
         } else {
-          quote.value = response;
+          quote.value = response.content;
         }
         disabled.value = false;
         loading.value = false;
       }
     );
   });
-}
+};
 </script>
