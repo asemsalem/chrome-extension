@@ -1,6 +1,6 @@
 import Content from "@/view/contentPage.vue";
 import { createApp } from "vue";
-import "../assets/css/index.css";
+import "../assets/css/content.css";
 
 const contentDetectorWrapper: HTMLElement = document.createElement("div");
 contentDetectorWrapper.id = "data-detector-wrapper-container";
@@ -22,14 +22,14 @@ const findInputFields = (sendResponse: any) => {
   if (inputFields.length > 0) {
     chrome.runtime.sendMessage(
       { message: "service_worker", content: "field_found" },
-      (response: object) => {
+      (response: object | string) => {
         sendResponse(response);
       }
     );
   } else if (inputFields.length == 0) {
     chrome.runtime.sendMessage(
       { message: "service_worker", content: "no_field_found" },
-      (response: object) => {
+      (response: object | string) => {
         sendResponse(response);
       }
     );

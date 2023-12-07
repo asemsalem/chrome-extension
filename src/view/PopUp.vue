@@ -53,8 +53,11 @@ const findInputFieldsHandler = () => {
         ({ type, response }) => {
           if (type == "image") {
             imageSrc.value = response;
-          } else {
+          } else if (type == "quote") {
             quote.value = response.content;
+          } else if (type == "error") {
+            console.log(response.message);
+            quote.value = response.message;
           }
           disabled.value = false;
           loading.value = false;
