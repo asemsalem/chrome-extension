@@ -45,20 +45,22 @@ const startActivity = async () => {
 
 const findInputFieldsHandler = () => {
   chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
-    let activeTabId: number = tabs[0].id ?? 0;
-    chrome.tabs.sendMessage(
-      activeTabId,
-      { message: "start" },
-      ({ type, response }) => {
-        if (type == "image") {
-          imageSrc.value = response;
-        } else {
-          quote.value = response.content;
+    let activeTabId: number | undefined = tabs[0]?.id;
+    if (activeTabId) {
+      chrome.tabs.sendMessage(
+        activeTabId,
+        { message: "start" },
+        ({ type, response }) => {
+          if (type == "image") {
+            imageSrc.value = response;
+          } else {
+            quote.value = response.content;
+          }
+          disabled.value = false;
+          loading.value = false;
         }
-        disabled.value = false;
-        loading.value = false;
-      }
-    );
+      );
+    }
   });
 };
 </script>
